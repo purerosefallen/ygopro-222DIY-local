@@ -848,6 +848,13 @@ int DuelClient::ClientAnalyze(char * msg, unsigned int len) {
 			mainGame->WaitFrameSignal(30);
 			break;
 		}
+		case HINT_MUSIC: {
+			char BGMName[1024];
+			myswprintf(textBuffer, L"./sound/BGM/custom/%ls.mp3", dataManager.GetDesc(data));
+			BufferIO::EncodeUTF8(textBuffer, BGMName);
+			mainGame->PlayMusic(BGMName, false);
+			break;
+		}
 		}
 		break;
 	}
