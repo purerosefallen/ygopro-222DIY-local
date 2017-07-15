@@ -1296,7 +1296,7 @@ void Game::PlayBGM(int scene) {
 		scene = BGM_ALL;
 	char BGMName[1024];
 	if (((scene != bgm_scene) && (bgm_scene != BGM_CUSTOM))
-	|| ((scene != previous_bgm_scene) && (bgm_scene == BGM_CUSTOM))
+	//|| ((scene != previous_bgm_scene) && (bgm_scene == BGM_CUSTOM))
 	|| (soundBGM && soundBGM->isFinished())) {
 		int count = BGMList[scene].size();
 		if(count <= 0)
