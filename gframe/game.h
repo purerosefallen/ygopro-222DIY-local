@@ -123,6 +123,7 @@ public:
 	void CloseDuelWindow();
 	void PlaySoundEffect(int sound);
 	void PlayMusic(char* song, bool loop);
+	bool IsCanCangeBGM(int scene);
 	void PlayBGM(int scene);
 
 	int LocalPlayer(int player);
