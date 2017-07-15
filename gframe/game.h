@@ -183,6 +183,7 @@ public:
 	bool is_siding;
 
 	int bgm_scene;
+	int previous_bgm_scene;
 
 	ClientField dField;
 	DeckBuilder deckBuilder;
@@ -625,6 +626,7 @@ extern Game* mainGame;
 #define BGM_DISADVANTAGE			5
 #define BGM_WIN						6
 #define BGM_LOSE					7
+#define BGM_CUSTOM					8
 
 #define DEFAULT_DUEL_RULE			4
 #endif // GAME_H

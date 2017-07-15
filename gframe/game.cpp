@@ -45,6 +45,7 @@ bool Game::Initialize() {
 	chain_when_avail = false;
 	is_building = false;
 	bgm_scene = -1;
+	previous_bgm_scene = -1;
 	memset(&dInfo, 0, sizeof(DuelInfo));
 	memset(chatTiming, 0, sizeof(chatTiming));
 	deckManager.LoadLFList();
@@ -1291,10 +1292,13 @@ void Game::PlayBGM(int scene) {
 	if(!mainGame->chkMusicMode->isChecked())
 		scene = BGM_ALL;
 	char BGMName[1024];
-	if(scene != bgm_scene || (soundBGM && soundBGM->isFinished())) {
+	if (((scene != bgm_scene) && (bgm_scene != BGM_CUSTOM))
+	|| ((scene != previous_bgm_scene) && (bgm_scene == BGM_CUSTOM))
+	|| (soundBGM && soundBGM->isFinished())) {
 		int count = BGMList[scene].size();
 		if(count <= 0)
 			return;
+		previous_bgm_scene = bgm_scene;
 		bgm_scene = scene;
 		int bgm = rand() % count;
 		auto name = BGMList[scene][bgm].c_str();
