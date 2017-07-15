@@ -759,6 +759,7 @@ public:
 #define HINT_CODE				8
 #define HINT_NUMBER				9
 #define HINT_CARD				10
+//modded
 #define HINT_MUSIC				11
 //
 #define CHINT_TURN				1

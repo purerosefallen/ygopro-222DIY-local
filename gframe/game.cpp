@@ -933,6 +933,7 @@ void Game::RefreshSingleplay() {
 	closedir(dir);
 #endif
 }
+//modded
 void Game::RefreshBGMList() {
 	RefershBGMDir(L"", BGM_DUEL);
 	RefershBGMDir(L"duel/", BGM_DUEL);
@@ -942,6 +943,7 @@ void Game::RefreshBGMList() {
 	RefershBGMDir(L"disadvantage/", BGM_DISADVANTAGE);
 	RefershBGMDir(L"win/", BGM_WIN);
 	RefershBGMDir(L"lose/", BGM_LOSE);
+	RefershBGMDir(L"custom/", BGM_CUSTOM);
 }
 void Game::RefershBGMDir(std::wstring path, int scene) {
 #ifdef _WIN32
@@ -1286,6 +1288,7 @@ void Game::PlayMusic(char* song, bool loop) {
 		engineMusic->setSoundVolume(gameConf.music_volume);
 	}
 }
+//modded
 void Game::PlayBGM(int scene) {
 	if(!mainGame->chkEnableMusic->isChecked())
 		return;

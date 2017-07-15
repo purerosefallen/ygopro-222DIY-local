@@ -512,6 +512,7 @@ int TagDuel::Analyze(char* msgbuffer, unsigned int len) {
 			case 3:
 			case 5:
 			case 10:
+			//modded
 			case 11: {
 				NetServer::SendBufferToPlayer(cur_player[player], STOC_GAME_MSG, offset, pbuf - offset);
 				break;
