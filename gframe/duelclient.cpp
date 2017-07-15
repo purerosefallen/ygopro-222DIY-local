@@ -855,14 +855,12 @@ int DuelClient::ClientAnalyze(char * msg, unsigned int len) {
 			char BGMName[1024];
 			myswprintf(textBuffer, L"./sound/BGM/custom/%ls.mp3", dataManager.GetDesc(data));			
 			BufferIO::EncodeUTF8(textBuffer, BGMName);
-			if (engineMusic->isCurrentlyPlaying(BGMName))
-				break;
 			int pscene = mainGame->bgm_scene;
-			if (pscene != BGM_CUSTOM) {
+			if (pscene != BGM_CUSTOM)
 				mainGame->previous_bgm_scene = pscene;
-				mainGame->bgm_scene = BGM_CUSTOM;
-			}
-			mainGame->PlayMusic(BGMName, false)
+			mainGame->bgm_scene = BGM_CUSTOM;
+			mainGame->PlayMusic(BGMName, false);
+			break;
 		}
 		}
 		break;
