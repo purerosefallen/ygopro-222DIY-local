@@ -1295,7 +1295,8 @@ void Game::PlayBGM(int scene) {
 	if(!mainGame->chkMusicMode->isChecked())
 		scene = BGM_ALL;
 	char BGMName[1024];
-	if ((soundBGM && soundBGM->isFinished()) || ((scene != bgm_scene) && ((bgm_scene != BGM_CUSTOM) || !((scene == BGM_DUEL) || (scene == BGM_ADVANTAGE) || (scene == BGM_DISADVANTAGE))))) {
+	//if ((soundBGM && soundBGM->isFinished()) || ((scene != bgm_scene) && ((bgm_scene != BGM_CUSTOM) || !((scene == BGM_DUEL) || (scene == BGM_ADVANTAGE) || (scene == BGM_DISADVANTAGE))))) {
+	if (((scene != bgm_scene) && (bgm_scene != BGM_CUSTOM)) || ((scene != previous_bgm_scene) && (bgm_scene == BGM_CUSTOM)) || (soundBGM && soundBGM->isFinished())) {
 		int count = BGMList[scene].size();
 		if(count <= 0)
 			return;

@@ -295,6 +295,7 @@ void DuelClient::HandleSTOCPacketLan(char* data, unsigned int len) {
 		mainGame->deckBuilder.result_string[1] = 0;
 		mainGame->deckBuilder.results.clear();
 		mainGame->deckBuilder.is_draging = false;
+		mainGame->deckBuilder.is_starting_dragging = false;
 		mainGame->deckBuilder.pre_mainc = deckManager.current_deck.main.size();
 		mainGame->deckBuilder.pre_extrac = deckManager.current_deck.extra.size();
 		mainGame->deckBuilder.pre_sidec = deckManager.current_deck.side.size();
@@ -849,7 +850,12 @@ int DuelClient::ClientAnalyze(char * msg, unsigned int len) {
 			break;
 		}
 		//modded
-		case HINT_MUSIC: {
+		//playing music
+		case 11: {
+			if (data == 0) {
+				mainGame->engineMusic->stopAllSounds();
+				break;
+			}
 			if (!mainGame->chkMusicMode->isChecked() || !mainGame->chkEnableMusic->isChecked())
 				break;
 			char BGMName[1024];
