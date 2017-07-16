@@ -45,7 +45,10 @@ bool Game::Initialize() {
 	chain_when_avail = false;
 	is_building = false;
 	bgm_scene = -1;
+	//modded
 	previous_bgm_scene = -1;
+	is_playing_custom_music = false;
+	
 	memset(&dInfo, 0, sizeof(DuelInfo));
 	memset(chatTiming, 0, sizeof(chatTiming));
 	deckManager.LoadLFList();

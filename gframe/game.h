@@ -184,7 +184,9 @@ public:
 	bool is_siding;
 
 	int bgm_scene;
+	//modded
 	int previous_bgm_scene;
+	int is_playing_custom_music;
 
 	ClientField dField;
 	DeckBuilder deckBuilder;
