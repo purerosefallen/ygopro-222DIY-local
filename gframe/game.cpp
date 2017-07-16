@@ -1296,10 +1296,12 @@ void Game::PlayBGM(int scene) {
 		scene = BGM_ALL;
 	char BGMName[1024];
 	//if ((soundBGM && soundBGM->isFinished()) || ((scene != bgm_scene) && ((bgm_scene != BGM_CUSTOM) || !((scene == BGM_DUEL) || (scene == BGM_ADVANTAGE) || (scene == BGM_DISADVANTAGE))))) {
-	if (((scene != bgm_scene) && (bgm_scene != BGM_CUSTOM)) || ((scene != previous_bgm_scene) && (bgm_scene == BGM_CUSTOM)) || (soundBGM && soundBGM->isFinished())) {
+	//if (((scene != bgm_scene) && (bgm_scene != BGM_CUSTOM)) || ((scene != previous_bgm_scene) && (bgm_scene == BGM_CUSTOM)) || (soundBGM && soundBGM->isFinished())) {
+	if (((scene != bgm_scene) && !is_playing_custom_music) || (soundBGM && soundBGM->isFinished())) {
 		int count = BGMList[scene].size();
 		if(count <= 0)
 			return;
+		is_playing_custom_music = false;
 		previous_bgm_scene = bgm_scene;
 		bgm_scene = scene;
 		int bgm = rand() % count;

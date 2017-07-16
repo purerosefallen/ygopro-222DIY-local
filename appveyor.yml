@@ -61,7 +61,7 @@ test: off
 
 artifacts:
   - path: ygopro.exe
-    name: ygopro(client)
+    name: ygopro temp build
 
 cache:
   - premake-5.0.0-alpha11-windows.zip
