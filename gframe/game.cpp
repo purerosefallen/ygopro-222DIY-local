@@ -1284,18 +1284,7 @@ void Game::PlaySoundEffect(int sound) {
 void Game::PlayMusic(char* song, bool loop) {
 	if(!mainGame->chkEnableMusic->isChecked())
 		return;
-	if(!engineMusic->isCurrentlyPlaying(song)) {
-		//test
-		wchar_t textBuffer[256];
-		myswprintf(textBuffer, L"Playing: %ls", song);
-		lstLog->addItem(textBuffer);
-		logParam.push_back(0);
-		gMutex.Lock();
-		SetStaticText(mainGame->stACMessage, 310, mainGame->textFont, textBuffer);
-		PopupElement(mainGame->wACMessage, 20);
-		gMutex.Unlock();
-		WaitFrameSignal(40);
-		
+	if(!engineMusic->isCurrentlyPlaying(song)) {		
 		engineMusic->stopAllSounds();
 		soundBGM = engineMusic->play2D(song, loop, false, true);
 		engineMusic->setSoundVolume(gameConf.music_volume);
