@@ -865,7 +865,6 @@ int DuelClient::ClientAnalyze(char * msg, unsigned int len) {
 			if (pscene != BGM_CUSTOM)
 				mainGame->previous_bgm_scene = pscene;
 			mainGame->bgm_scene = BGM_CUSTOM;
-			mainGame->is_playing_custom_music = true;
 			mainGame->PlayMusic(BGMName, false);
 			break;
 		}
@@ -905,7 +904,6 @@ int DuelClient::ClientAnalyze(char * msg, unsigned int len) {
 		mainGame->dInfo.vic_string = 0;
 		mainGame->showcard = 0;
 		//modded
-		mainGame->is_playing_custom_music = false;
 		break;
 	}
 	case MSG_WAITING: {
@@ -1940,7 +1938,6 @@ int DuelClient::ClientAnalyze(char * msg, unsigned int len) {
 	}
 	case MSG_NEW_TURN: {
 		//modded
-		mainGame->is_playing_custom_music = false;
 		mainGame->PlaySoundEffect(SOUND_NEXT_TURN);
 		int player = mainGame->LocalPlayer(BufferIO::ReadInt8(pbuf));
 		mainGame->dInfo.turn++;

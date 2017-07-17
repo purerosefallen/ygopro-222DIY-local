@@ -47,7 +47,6 @@ bool Game::Initialize() {
 	bgm_scene = -1;
 	//modded
 	previous_bgm_scene = -1;
-	is_playing_custom_music = false;
 	
 	memset(&dInfo, 0, sizeof(DuelInfo));
 	memset(chatTiming, 0, sizeof(chatTiming));
@@ -1286,6 +1285,17 @@ void Game::PlayMusic(char* song, bool loop) {
 	if(!mainGame->chkEnableMusic->isChecked())
 		return;
 	if(!engineMusic->isCurrentlyPlaying(song)) {
+		//test
+		wchar_t textBuffer[256];
+		myswprintf(textBuffer, L"Playing: %ls", song);
+		lstLog->addItem(textBuffer);
+		logParam.push_back(0);
+		gMutex.Lock();
+		SetStaticText(mainGame->stACMessage, 310, mainGame->textFont, textBuffer);
+		PopupElement(mainGame->wACMessage, 20);
+		gMutex.Unlock();
+		WaitFrameSignal(40);
+		
 		engineMusic->stopAllSounds();
 		soundBGM = engineMusic->play2D(song, loop, false, true);
 		engineMusic->setSoundVolume(gameConf.music_volume);
@@ -1299,12 +1309,10 @@ void Game::PlayBGM(int scene) {
 		scene = BGM_ALL;
 	char BGMName[1024];
 	//if ((soundBGM && soundBGM->isFinished()) || ((scene != bgm_scene) && ((bgm_scene != BGM_CUSTOM) || !((scene == BGM_DUEL) || (scene == BGM_ADVANTAGE) || (scene == BGM_DISADVANTAGE))))) {
-	//if (((scene != bgm_scene) && (bgm_scene != BGM_CUSTOM)) || ((scene != previous_bgm_scene) && (bgm_scene == BGM_CUSTOM)) || (soundBGM && soundBGM->isFinished())) {
-	if (((scene != bgm_scene) && !is_playing_custom_music) || (soundBGM && soundBGM->isFinished())) {
+	if (((scene != bgm_scene) && (bgm_scene != BGM_CUSTOM)) || ((scene != previous_bgm_scene) && (bgm_scene == BGM_CUSTOM)) || (soundBGM && soundBGM->isFinished())) {
 		int count = BGMList[scene].size();
 		if(count <= 0)
 			return;
-		is_playing_custom_music = false;
 		previous_bgm_scene = bgm_scene;
 		bgm_scene = scene;
 		int bgm = rand() % count;

@@ -186,7 +186,6 @@ public:
 	int bgm_scene;
 	//modded
 	int previous_bgm_scene;
-	bool is_playing_custom_music;
 
 	ClientField dField;
 	DeckBuilder deckBuilder;
