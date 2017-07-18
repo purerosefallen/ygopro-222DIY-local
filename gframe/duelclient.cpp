@@ -871,6 +871,15 @@ int DuelClient::ClientAnalyze(char * msg, unsigned int len) {
 			mainGame->PlayMusic(BGMName, false);
 			break;
 		}
+		case 12: {
+			if(!mainGame->chkEnableSound->isChecked())
+				break;
+			char SoundName[1024];
+			myswprintf(textBuffer, L"./sound/custom/%ls.wav", dataManager.GetDesc(data));
+			BufferIO::EncodeUTF8(textBuffer, SoundName);
+			mainGame->engineSound->play2D(SoundName);
+			break;
+		}
 		}
 		break;
 	}
@@ -906,7 +915,6 @@ int DuelClient::ClientAnalyze(char * msg, unsigned int len) {
 		mainGame->WaitFrameSignal(120);
 		mainGame->dInfo.vic_string = 0;
 		mainGame->showcard = 0;
-		//modded
 		break;
 	}
 	case MSG_WAITING: {
@@ -1940,7 +1948,6 @@ int DuelClient::ClientAnalyze(char * msg, unsigned int len) {
 		return true;
 	}
 	case MSG_NEW_TURN: {
-		//modded
 		mainGame->PlaySoundEffect(SOUND_NEXT_TURN);
 		int player = mainGame->LocalPlayer(BufferIO::ReadInt8(pbuf));
 		mainGame->dInfo.turn++;
