@@ -859,12 +859,15 @@ int DuelClient::ClientAnalyze(char * msg, unsigned int len) {
 			if (!mainGame->chkMusicMode->isChecked() || !mainGame->chkEnableMusic->isChecked())
 				break;
 			char BGMName[1024];
-			myswprintf(textBuffer, L"./sound/BGM/custom/%ls.mp3", dataManager.GetDesc(data));			
+			myswprintf(textBuffer, L"./sound/BGM/custom/%ls.mp3", dataManager.GetDesc(data));
 			BufferIO::EncodeUTF8(textBuffer, BGMName);
+			if(mainGame->engineMusic->isCurrentlyPlaying(BGMName))
+				break;
 			int pscene = mainGame->bgm_scene;
 			if (pscene != BGM_CUSTOM)
 				mainGame->previous_bgm_scene = pscene;
 			mainGame->bgm_scene = BGM_CUSTOM;
+			mainGame->PlayMusic("./test_yield.mp3", false);
 			mainGame->PlayMusic(BGMName, false);
 			break;
 		}
