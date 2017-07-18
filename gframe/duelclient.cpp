@@ -856,26 +856,27 @@ int DuelClient::ClientAnalyze(char * msg, unsigned int len) {
 				mainGame->engineMusic->stopAllSounds();
 				break;
 			}
-			int mcount = mainGame->BGMList[BGM_CUSTOM].size();
-			if (!mainGame->chkMusicMode->isChecked() || !mainGame->chkEnableMusic->isChecked() || (mcount <= 0))
+//			int mcount = mainGame->BGMList[BGM_CUSTOM].size();
+//			if (!mainGame->chkMusicMode->isChecked() || !mainGame->chkEnableMusic->isChecked() || (mcount <= 0))
+			if (!mainGame->chkMusicMode->isChecked())
 				break;
 			char BGMName[1024];
 			myswprintf(textBuffer, L"./sound/BGM/custom/%ls.mp3", dataManager.GetDesc(data));
 			BufferIO::EncodeUTF8(textBuffer, BGMName);
 			if(mainGame->engineMusic->isCurrentlyPlaying(BGMName))
 				break;
-			bool check = false;
-			for (int32 i = 0; i < mcount; ++i) {
-				wchar_t fname[1024];
-				auto cname = mainGame->BGMList[BGM_CUSTOM][i].c_str();
-				char pname[1024];
-				myswprintf(fname, L"./sound/BGM/%ls", cname);
-				BufferIO::EncodeUTF8(fname, pname);
-				if (pname == BGMName)
-					check = true;
-			}
-			if (!check)
-				break;
+//			bool check = false;
+//			for (int32 i = 0; i < mcount; ++i) {
+//				wchar_t fname[1024];
+//				auto cname = mainGame->BGMList[BGM_CUSTOM][i].c_str();
+//				char pname[1024];
+//				myswprintf(fname, L"./sound/BGM/%ls", cname);
+//				BufferIO::EncodeUTF8(fname, pname);
+//				if (pname == BGMName)
+//					check = true;
+//			}
+//			if (!check)
+//				break;
 			int pscene = mainGame->bgm_scene;
 			if (pscene != BGM_CUSTOM)
 				mainGame->previous_bgm_scene = pscene;
