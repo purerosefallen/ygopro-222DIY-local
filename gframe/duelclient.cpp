@@ -868,8 +868,10 @@ int DuelClient::ClientAnalyze(char * msg, unsigned int len) {
 			for (int32 i = 0; i < mcount; ++i) {
 				wchar_t fname[1024];
 				auto cname = mainGame->BGMList[BGM_CUSTOM][i].c_str();
+				char pname[1024];
 				myswprintf(fname, L"./sound/BGM/%ls", cname);
-				if (fname == textBuffer)
+				BufferIO::EncodeUTF8(fname, pname);
+				if (pname == BGMName)
 					check = true;
 			}
 			if (!check)
