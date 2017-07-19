@@ -447,6 +447,8 @@ public:
 	irrklang::ISoundEngine* engineSound;
 	irrklang::ISoundEngine* engineMusic;
 	irrklang::ISound* soundBGM;
+	//modded
+	irrklang::ISoundEngine* engineCustom;
 };
 
 extern Game* mainGame;

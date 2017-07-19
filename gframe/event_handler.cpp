@@ -2042,6 +2042,8 @@ bool ClientField::OnCommonEvent(const irr::SEvent& event) {
 				mainGame->gameConf.music_volume = (double)mainGame->scrMusicVolume->getPos() / 100;
 				mainGame->engineSound->setSoundVolume(mainGame->gameConf.sound_volume);
 				mainGame->engineMusic->setSoundVolume(mainGame->gameConf.music_volume);
+				//modded
+				mainGame->engineCustom->setSoundVolume(mainGame->gameConf.sound_volume);
 				break;
 			}
 			}
