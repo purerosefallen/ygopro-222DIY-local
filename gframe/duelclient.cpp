@@ -886,6 +886,10 @@ int DuelClient::ClientAnalyze(char * msg, unsigned int len) {
 			break;
 		}
 		case 12: {
+			if (data == 0) {
+				mainGame->engineSound->stopAllSounds();
+				break;
+			}
 			if(!mainGame->chkEnableSound->isChecked())
 				break;
 			char SoundName[1024];
