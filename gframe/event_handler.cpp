@@ -2000,6 +2000,13 @@ bool ClientField::OnCommonEvent(const irr::SEvent& event) {
 				return true;
 				break;
 			}
+			//modded
+			case CHECKBOX_ENABLE_SOUND: {
+				if(!mainGame->chkEnableSound->isChecked())
+					mainGame->engineSound->stopAllSounds();
+				return true;
+				break;
+			}
 			}
 			break;
 		}
