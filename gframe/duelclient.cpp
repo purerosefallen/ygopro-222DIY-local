@@ -891,8 +891,8 @@ int DuelClient::ClientAnalyze(char * msg, unsigned int len) {
 			char SoundName[1024];
 			myswprintf(textBuffer, L"./sound/custom/%ls.wav", dataManager.GetDesc(data));
 			BufferIO::EncodeUTF8(textBuffer, SoundName);
-			mainGame->engineCustom->play2D(SoundName);
-			mainGame->engineCustom->setSoundVolume(mainGame->gameConf.sound_volume);
+			mainGame->engineSound->play2D(SoundName);
+			mainGame->engineSound->setSoundVolume(mainGame->gameConf.sound_volume);
 			break;
 		}
 		}
