@@ -14,7 +14,7 @@
 #include <dirent.h>
 #endif
 
-const unsigned short PRO_VERSION = 0x133E;
+const unsigned short PRO_VERSION = 0x133F;
 
 namespace ygo {
 
