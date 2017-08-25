@@ -188,7 +188,7 @@ public:
 	int bgm_scene;
 	//modded
 	int previous_bgm_scene;
-
+	
 	ClientField dField;
 	DeckBuilder deckBuilder;
 	MenuHandler menuHandler;
