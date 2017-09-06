@@ -731,7 +731,8 @@ void Game::MainLoop() {
 			usleep(20000);
 #endif
 		if(cur_time >= 1000) {
-			myswprintf(cap, L"YGOPro FPS: %d", fps);
+			//modded
+			myswprintf(cap, L"YGOPro 222DIY FPS: %d", fps);
 			device->setWindowCaption(cap);
 			fps = 0;
 			cur_time -= 1000;
