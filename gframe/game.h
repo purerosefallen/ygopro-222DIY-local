@@ -188,7 +188,7 @@ public:
 	int bgm_scene;
 	//modded
 	int previous_bgm_scene;
-	
+
 	ClientField dField;
 	DeckBuilder deckBuilder;
 	MenuHandler menuHandler;
@@ -578,6 +578,8 @@ extern Game* mainGame;
 #define SCROLL_FILTER				315
 #define EDITBOX_KEYWORD				316
 #define BUTTON_CLEAR_FILTER			317
+#define COMBOBOX_ATTRIBUTE			318
+#define COMBOBOX_RACE				319
 #define BUTTON_REPLAY_START			320
 #define BUTTON_REPLAY_PAUSE			321
 #define BUTTON_REPLAY_STEP			322
@@ -595,6 +597,7 @@ extern Game* mainGame;
 #define SCROLL_VOLUME				363
 
 #define COMBOBOX_SORTTYPE			370
+#define COMBOBOX_LIMIT				371
 
 #define BUTTON_MARKS_FILTER			380
 #define BUTTON_MARKERS_OK			381
